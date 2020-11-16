@@ -8,7 +8,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
  
 // Include config file
 require_once "db.php";
- 
+
 $user = $passwd = "";
 $username_err = $password_err = "";
  
@@ -29,10 +29,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err)){
       $sql = "SELECT id, user, passwd FROM users WHERE user='$user' AND passwd='$passwd'";
 
-      $q = $conn->query($sql);
-      if(!q){
-        echo "Oops! Something went wrong.";  
-      }else{
+      if($q = $conn->query($sql)){
+
         session_start();
                             
         $_SESSION["loggedin"] = true;
@@ -40,7 +38,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION["username"] = $username;                            
                             
         header("location: welcome.php");
-      }
+        exit();
+      }else{
+        echo "ERROR";
     }
     
     mysqli_close($link);
