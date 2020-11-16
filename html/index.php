@@ -38,12 +38,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION["username"] = $username;                            
                             
         header("location: welcome.php");
-        exit();
+        exit;
       }else{
         echo "ERROR";
     }
     
-    mysqli_close($link);
+    mysqli_close($conn);
 }
 
 
