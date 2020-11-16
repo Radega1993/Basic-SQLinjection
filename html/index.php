@@ -50,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 <html>
 <head>
-  <title> Basic SQL injection <title>
+  <title> Basic SQL injection </title>
 </head>
 <body>
   <form action="index.php" method="post">
