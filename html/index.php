@@ -27,7 +27,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     if(empty($username_err) && empty($password_err)){
-      $sql = "SELECT id, user, passwd FROM users WHERE user='$user' AND passwd='$passwd'";
+      $sql = "SELECT id, username, password FROM users WHERE user='$user' AND passwd='$passwd'";
+      echo $sql;
 
       if($q = $conn->query($sql)){
 
