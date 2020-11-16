@@ -30,15 +30,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       $sql = "SELECT id, username, password FROM users WHERE username='$user' AND password='$passwd'";
 
       if($q = $conn->query($sql)){
-        echo "Returned rows are: " . $q -> num_rows;
-        session_start();
+        if($q -> num_rows !== 0){
+          session_start();
                             
-        $_SESSION["loggedin"] = true;
-        $_SESSION["id"] = $id;
-        $_SESSION["username"] = $username;                            
+          $_SESSION["loggedin"] = true;
+          $_SESSION["id"] = $id;
+          $_SESSION["username"] = $username;                            
                             
-        header("location: welcome.php");
-        exit;
+          header("location: welcome.php");
+          exit;
+        }else{
+          echo "ERROR";
       }else{
         echo "ERROR";
     }
