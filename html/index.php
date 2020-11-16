@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
   <form action="index.php" method="post">
-    <div class="container">
+    <div>
       <label for="user"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="user" required>
 
